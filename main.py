@@ -134,9 +134,6 @@ class MainWindow(QWidget):
 		self.progressMessage.clear()
 		self.progressCursor.insertText("Decensoring has begun!\n")
 
-		# for now, decensor is initiated when this app is started
-		# self.decensor = Decensor(text_edit = self.progressMessage, text_cursor = self.progressCursor, ui_mode = True)
-
 		#https://stackoverflow.com/questions/42349470/pyqt-find-checked-radiobutton-in-a-group
 		#set decensor to right settings
 		#censor type
@@ -158,12 +155,10 @@ class MainWindow(QWidget):
 				variations = int(vb.text())
 		self.decensor.variations = variations
 
-
 		self.decensorButton.setEnabled(False)
 		self.decensor.start()
-		# decensor.decensor_all_images_in_folder()
 
-	# #centers the main window
+	# centers the main window
 	def center(self):
 		qr = self.frameGeometry()
 		cp = QDesktopWidget().availableGeometry().center()
@@ -172,7 +167,7 @@ class MainWindow(QWidget):
 
 if __name__ == '__main__':
 	import os
-    # you could remove this if statement if there's no error without this
+	# if OS is "Windows"
 	if os.name == 'nt':
 		import PySide2
 		pyqt = os.path.dirname(PySide2.__file__)
